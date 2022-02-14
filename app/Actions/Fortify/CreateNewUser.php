@@ -2,6 +2,8 @@
 
 namespace App\Actions\Fortify;
 
+use App\Events\NewUser;
+use App\Models\Student;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -26,6 +28,14 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
+
+        $student = Student::create([
+            'name' => $input['name'],
+            'email' => $input['email'],
+            'status' => 1,
+        ]);
+
+        event(new NewUser($student));
 
         return User::create([
             'name' => $input['name'],
