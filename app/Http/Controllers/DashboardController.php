@@ -35,4 +35,14 @@ class DashboardController extends Controller
     {
         return view('students');
     }
+
+     /**
+     * render students course enrolled page
+     *
+     * @return void
+     */
+    public function studentsEnrolledPage()
+    {
+        return view('enrolled-courses');
+    }
 }

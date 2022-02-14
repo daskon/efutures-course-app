@@ -20,11 +20,9 @@ class Courses extends Component
 
     public function render()
     {
-        //$enrolled = Student::with('course')->get(); 
-        //dd($enrolled);
         return view('livewire.courses', ['courses' => $this->getCourses()]);
     }
-    
+
     /**
      * get list of Courses
      *

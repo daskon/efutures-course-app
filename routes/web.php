@@ -24,6 +24,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
     Route::get('/courses', [DashboardController::class, 'coursesPage'])->name('courses');
     Route::get('/students', [DashboardController::class, 'studentsPage'])->name('students');
+    Route::get('/enrolled', [DashboardController::class, 'studentsEnrolledPage'])->name('enrolled');
 
 });
 
